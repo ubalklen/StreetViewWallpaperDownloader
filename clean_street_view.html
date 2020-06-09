@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Clean Street View</title>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+    * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script>
+        function initPano() {
+            // Note: constructed panorama objects have visible: true
+            // set by default.
+            const urlParams = new URLSearchParams(window.location.search);
+            const latitude = parseFloat(urlParams.get('lat'));
+            const longitude = parseFloat(urlParams.get('lng'));
+            var panorama = new google.maps.StreetViewPanorama(
+                document.getElementById('map'), {
+                position: { lat: latitude, lng: longitude },
+                addressControl: false,
+                linksControl: false,
+                panControl: false,
+                fullscreenControl: false,
+                zoomControl: false,
+                enableCloseButton: false,
+                showRoadLabels: false
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=ADD_YOUR_KEY_HERE&callback=initPano">
+    </script>
+</body>
+
+</html>
