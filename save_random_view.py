@@ -59,3 +59,4 @@ page_path = path.join(
 driver.get(page_path)
 time.sleep(1)  # wait for image to load
 driver.save_screenshot("images\\" + str(lat) + "_" + str(lng) + ".png")
+driver.close()
